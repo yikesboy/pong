@@ -10,7 +10,8 @@ function love.load()
 end
 
 function love.update(dt)
-    validate_ball(dt)
+    update_ball(dt)
+    update_paddles(dt)
 end
 
 function love.draw()
