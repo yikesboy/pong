@@ -15,6 +15,7 @@ function update_paddles(dt)
     if love.keyboard.isDown('down') then
          game.paddles.right.pos_y = math.min(game.paddles.right.pos_y + PADDLE_SPEED * dt, game.window.height-game.paddles.right.height)
     end
+    game.paddles.left.pos_y = game.ball.pos_y - game.paddles.left.height * 0.5
 end
 
 function validate_ball_position()

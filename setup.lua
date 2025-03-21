@@ -4,6 +4,7 @@ function game_setup()
     game.window.font = love.graphics.newFont(15*10)
     love.graphics.setFont(game.window.font)
     game.window.color = love.graphics.setColor(1, 1, 1)
+    game.window.seperator.stroke_length = (game.window.height * 0.5) / 60
 end
 
 function spawn_ball()
@@ -16,9 +17,7 @@ end
 
 function spawn_paddles()
     game.paddles.left.pos_x = game.window.width * 0.02
-    --game.paddles.left.pos_y = game.window.height * 0.5 - game.paddles.left.height * 0.5
-    game.paddles.left.pos_y = 0
-    game.paddles.left.height = game.window.height
+    game.paddles.left.pos_y = game.window.height * 0.5 - game.paddles.left.height * 0.5
     game.paddles.right.pos_x = game.window.width * 0.98 - game.paddles.right.width
     game.paddles.right.pos_y = game.window.height * 0.5 - game.paddles.right.height * 0.5
 end

@@ -22,7 +22,18 @@ function draw_scores()
     )
 end
 
+function draw_separator()
+    local pos_y = 0
+    local pos_x = game.window.width * 0.5
+
+    while pos_y <= game.window.height do
+        love.graphics.line(pos_x,pos_y, pos_x,pos_y+game.window.seperator.stroke_length)
+        pos_y = pos_y + 2 * game.window.seperator.stroke_length
+    end
+end
+
 function drawNormalizedText(text, x, y)
+    love.graphics.setLineWidth(2)
     local normalized_x = game.window.font:getWidth(text)
     local normalized_y = game.window.font:getHeight()
     love.graphics.print(

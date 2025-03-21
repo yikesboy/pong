@@ -3,13 +3,17 @@ BALL_SPEED = 1000
 PADDLE_HEIGHT = 150
 PADDLE_WIDTH = 20
 PADDLE_SPEED = 1600
+STROKE_COUNT = 60
 
 game = {
     window = {
         width = 0,
         height = 0,
         font = nil,
-        color = 0
+        color = 0,
+        seperator = {
+            stroke_length = 0
+        }
     },
     players = {
         left = {
