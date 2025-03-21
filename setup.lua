@@ -13,7 +13,9 @@ end
 
 function spawn_paddles()
     game.paddles.left.pos_x = game.window.width * 0.02
-    game.paddles.left.pos_y = game.window.height * 0.5 - game.paddles.left.height * 0.5
+    --game.paddles.left.pos_y = game.window.height * 0.5 - game.paddles.left.height * 0.5
+    game.paddles.left.pos_y = 0
+    game.paddles.left.height = game.window.height
     game.paddles.right.pos_x = game.window.width * 0.98 - game.paddles.right.width
     game.paddles.right.pos_y = game.window.height * 0.5 - game.paddles.right.height * 0.5
 end

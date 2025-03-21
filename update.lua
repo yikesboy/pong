@@ -10,10 +10,10 @@ end
 
 function update_paddles(dt)
     if love.keyboard.isDown('up') then
-         game.paddles.pos_y = game.paddles.pos_y - PADDLE_SPEED * dt
+         game.paddles.right.pos_y = math.max(game.paddles.right.pos_y - PADDLE_SPEED * dt, 0)
     end
     if love.keyboard.isDown('down') then
-         game.paddles.pos_y = game.paddles.pos_y + PADDLE_SPEED * dt
+         game.paddles.right.pos_y = math.min(game.paddles.right.pos_y + PADDLE_SPEED * dt, game.window.height-game.paddles.right.height)
     end
 end
 
