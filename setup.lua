@@ -1,6 +1,9 @@
 function game_setup()
     love.window.setMode(0, 0, { fullscreen = true })
     game.window.width, game.window.height = love.graphics.getDimensions()
+    game.window.font = love.graphics.newFont(15*10)
+    love.graphics.setFont(game.window.font)
+    game.window.color = love.graphics.setColor(1, 1, 1)
 end
 
 function spawn_ball()

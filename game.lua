@@ -2,12 +2,22 @@ BALL_RADIUS = 20
 BALL_SPEED = 1000
 PADDLE_HEIGHT = 150
 PADDLE_WIDTH = 20
-PADDLE_SPEED = 1400
+PADDLE_SPEED = 1600
 
 game = {
     window = {
         width = 0,
-        height = 0
+        height = 0,
+        font = nil,
+        color = 0
+    },
+    players = {
+        left = {
+            score = 0
+        },
+        right = {
+            score = 0
+        }
     },
     paddles = {
         left = {

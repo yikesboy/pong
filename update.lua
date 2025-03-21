@@ -34,10 +34,12 @@ function validate_ball_position()
 
     if game.ball.pos_x >= game.window.width then
         spawn_ball()
+        game.players.left.score = game.players.left.score + 1
     end
 
     if game.ball.pos_x <= 0 then
         spawn_ball()
+        game.players.right.score = game.players.right.score + 1
     end
 
     if game.ball.pos_y >= game.window.height then

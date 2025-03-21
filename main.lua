@@ -17,4 +17,5 @@ end
 function love.draw()
     draw_ball()
     draw_paddles()
+    draw_scores()
 end
