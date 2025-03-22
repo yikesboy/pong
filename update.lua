@@ -16,6 +16,7 @@ function update_paddles(dt)
          game.paddles.right.pos_y = math.min(game.paddles.right.pos_y + PADDLE_SPEED * dt, game.window.height-game.paddles.right.height)
     end
     game.paddles.left.pos_y = game.ball.pos_y - game.paddles.left.height * 0.5
+    --game.paddles.right.pos_y = game.ball.pos_y - game.paddles.right.height * 0.5
 end
 
 function validate_ball_position()
@@ -24,6 +25,7 @@ function validate_ball_position()
         and game.ball.pos_y <= (game.paddles.left.pos_y + game.paddles.left.height)
     then
        game.ball.velocity.x = math.abs(game.ball.velocity.x)
+        game.sounds.hit_sfx:play()
     end
 
     if game.ball.pos_x >= game.paddles.right.pos_x
@@ -31,6 +33,7 @@ function validate_ball_position()
         and game.ball.pos_y <= game.paddles.right.pos_y + game.paddles.right.height
     then
        game.ball.velocity.x = -math.abs(game.ball.velocity.x)
+        game.sounds.hit_sfx:play()
     end
 
     if game.ball.pos_x >= game.window.width + game.ball.radius then
@@ -45,10 +48,12 @@ function validate_ball_position()
 
     if game.ball.pos_y >= game.window.height then
         game.ball.velocity.y = -math.abs(game.ball.velocity.y)
+        game.sounds.hit_sfx:play()
     end
 
     if game.ball.pos_y <= 0 then
         game.ball.velocity.y = math.abs(game.ball.velocity.y)
+        game.sounds.hit_sfx:play()
     end
 end
 

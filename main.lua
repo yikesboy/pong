@@ -5,6 +5,7 @@ require("draw")
 
 function love.load()
     game_setup()
+    sound_setup()
     spawn_ball()
     spawn_paddles()
 end

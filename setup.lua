@@ -7,6 +7,13 @@ function game_setup()
     game.window.seperator.stroke_length = (game.window.height * 0.5) / 60
 end
 
+function sound_setup()
+    game.sounds.background_music = love.audio.newSource("assets/sounds/661104__evapofficial__synth-bass-loop-28.wav", "static")
+    game.sounds.hit_sfx = love.audio.newSource("assets/sounds/4359__noisecollector__pongblipf4.wav", "static")
+    game.sounds.background_music:play()
+    game.sounds.background_music:setLooping(true)
+end
+
 function spawn_ball()
     math.randomseed(os.time())
     game.ball.pos_x = math.random(game.window.width * 0.3, game.window.width * 0.7)

@@ -13,7 +13,11 @@ game = {
         color = 0,
         seperator = {
             stroke_length = 0
-        }
+        },
+    },
+    sounds = {
+        background_music = nil,
+        hit_sfx = nil
     },
     players = {
         left = {
