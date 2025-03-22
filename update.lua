@@ -27,11 +27,13 @@ function validate_ball_position()
     if game.ball.pos_x >= game.window.width + game.ball.radius then
         spawn_ball()
         game.players.left.score = game.players.left.score + 1
+        game.players.left.combo = 0
     end
 
     if game.ball.pos_x <= 0 - game.ball.radius * 2 then
         spawn_ball()
         game.players.right.score = game.players.right.score + 1
+        game.players.right.combo = 0
     end
 
     if game.ball.pos_y >= game.window.height then
@@ -87,6 +89,10 @@ function handle_paddle_collision(paddle, is_left_paddle)
             game.ball.velocity.x = -speed * math.cos(angle)
         end
         game.ball.velocity.y = speed * math.sin(angle)
-        game.sounds.hit_sfx:play()
+        if is_left_paddle then 
+    game.players.left.combo = game.players.left.combo + 1
+else 
+    game.players.right.combo = game.players.right.combo + 1
+end        game.sounds.hit_sfx:play()
     end
 end

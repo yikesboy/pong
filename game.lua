@@ -21,10 +21,12 @@ game = {
     },
     players = {
         left = {
-            score = 0
+            score = 0,
+            combo = 0
         },
         right = {
-            score = 0
+            score = 0,
+            combo = 0
         }
     },
     paddles = {

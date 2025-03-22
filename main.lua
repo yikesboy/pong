@@ -20,4 +20,5 @@ function love.draw()
     draw_paddles()
     draw_scores()
     draw_separator()
+    draw_progressbars()
 end
