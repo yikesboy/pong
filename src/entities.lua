@@ -21,10 +21,13 @@ local config = require("config")
 
 local entities = {
     ball = {
-        x = 0,
-        y = 0,
+        x = config.WINDOW_WIDTH / 2,
+        y = config.WINDOW_HEIGHT / 2,
         radius = config.BALL_RADIUS,
-        speed = { x = 0, y = 0 }
+        speed = {
+            x = config.BALL_SPEED * (math.random(0,1) == 0 and 1 or -1),
+            y = 0
+        }
     },
     left_paddle = {
         x = 0,
