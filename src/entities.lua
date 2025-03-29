@@ -32,13 +32,14 @@ local entities = {
     left_paddle = {
         x = 0,
         y = 0,
-        height = config.PADDLE_HEIGHT,
+        height = config.WINDOW_HEIGHT,
+        --height = config.PADDLE_HEIGHT,
         width = config.PADDLE_WIDTH,
         speed = config.PADDLE_SPEED,
         score = 0
     },
     right_paddle = {
-        x = 0,
+        x = config.WINDOW_WIDTH - config.PADDLE_WIDTH,
         y = 0,
         height = config.PADDLE_HEIGHT,
         width = config.PADDLE_WIDTH,
