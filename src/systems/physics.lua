@@ -50,9 +50,11 @@ end
 ---@param entities Entities
 function physics.check_out_of_bounds(entities)
     if entities.ball.x < 0 then
+        physics.play_round_loss_sound()
         entities.right_paddle.score =  entities.right_paddle.score + 1
         physics.reset_ball(entities.ball)
     elseif entities.ball.x > config.WINDOW_WIDTH then
+        physics.play_round_loss_sound()
         entities.left_paddle.score =  entities.left_paddle.score + 1
         physics.reset_ball(entities.ball)
     end
@@ -87,5 +89,11 @@ end
 function physics.play_collision_sound()
     love.audio.play(assets.sounds.hit_sfx)
 end
+
+---Plays round_loss from the assets store
+function physics.play_round_loss_sound()
+    love.audio.play(assets.sounds.round_loss)
+end
+
 
 return physics
