@@ -50,10 +50,10 @@ end
 ---@param entities Entities
 function physics.check_out_of_bounds(entities)
     if entities.ball.x < 0 then
-        entities.left_paddle.score =  entities.left_paddle.score + 1
+        entities.right_paddle.score =  entities.right_paddle.score + 1
         physics.reset_ball(entities.ball)
     elseif entities.ball.x > config.WINDOW_WIDTH then
-        entities.right_paddle.score =  entities.right_paddle.score + 1
+        entities.left_paddle.score =  entities.left_paddle.score + 1
         physics.reset_ball(entities.ball)
     end
 end
