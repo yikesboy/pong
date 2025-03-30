@@ -9,7 +9,8 @@ local title = {
 local menu = {
     options = {
         {text = "Single Player", mode = "single"},
-        {text = "Couch Multiplayer", mode = "couch"}
+        {text = "Couch Multiplayer", mode = "couch"},
+        {text = "Quit", mode = "quit"}
     },
     selected = 1
 }
@@ -27,7 +28,11 @@ function title:keypressed(key)
         menu.selected = math.max(menu.selected - 1, 1)
     elseif key == "return" then
         local selectedMode = menu.options[menu.selected].mode
-        return "play", {mode = selectedMode}
+        if selectedMode == "quit" then
+            love.event.quit()
+        else
+            return "play", {mode = selectedMode}
+        end
     end
 end
 
