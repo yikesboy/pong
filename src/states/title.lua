@@ -22,6 +22,9 @@ end
 
 
 function title:keypressed(key)
+    if key then
+        love.audio.play(assets.sounds.switch_sfx)
+    end
     if key == "down" then
         menu.selected = math.min(menu.selected + 1, #menu.options)
     elseif key == "up" then

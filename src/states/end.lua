@@ -24,6 +24,9 @@ function end_state:update(dt)
 end
 
 function end_state:keypressed(key)
+    if key then
+        love.audio.play(assets.sounds.switch_sfx)
+    end
     if key == "down" then
         self.menu.selected = math.min(self.menu.selected + 1, #self.menu.options)
     elseif key == "up" then
