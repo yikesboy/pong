@@ -1,4 +1,5 @@
 local config = require("config")
+local entities = {}
 
 ---@class Ball
 ---@field x number
@@ -19,7 +20,8 @@ local config = require("config")
 ---@field left_paddle Paddle
 ---@field right_paddle Paddle
 
-local entities = {
+function entities.create()
+    return {
     ball = {
         x = config.WINDOW_WIDTH / 2,
         y = config.WINDOW_HEIGHT / 2,
@@ -46,5 +48,12 @@ local entities = {
         score = 0
     },
 }
+end
+
+function entities.set(new_entities)
+    for key, value in pairs(new_entities) do
+        entities[key] = value
+    end
+end
 
 return entities

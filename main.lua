@@ -4,11 +4,18 @@ local states = {
     title = require("src.states.title"),
     play = require("src.states.play")
 }
+local entities = require("src.entities")
+
 
 local current_state = nil
 
 function love.load()
-    love.window.setMode(config.WINDOW_WIDTH, config.WINDOW_HEIGHT)
+    love.window.setFullscreen(true, "desktop")
+    config.BALL_SPEED = config.BALL_SPEED * ( love.graphics.getWidth() / config.WINDOW_WIDTH)
+    config.WINDOW_WIDTH = love.graphics.getWidth()
+    config.WINDOW_HEIGHT = love.graphics.getHeight()
+
+    entities.set(entities.create())
     assets.load()
     current_state = states.title
 end
