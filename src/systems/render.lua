@@ -40,11 +40,11 @@ function draw_scores(entities)
     love.graphics.setFont(assets.fonts.main_large)
 
     local left_text = tostring(entities.left_paddle.score)
-    local left_x, left_y = utils.get_normalized_coordinates(left_text, config.WINDOW_WIDTH * 0.25, config.WINDOW_HEIGHT/20)
+    local left_x, left_y = utils.get_normalized_coordinates(left_text, assets.fonts.main_large, config.WINDOW_WIDTH * 0.25, config.WINDOW_HEIGHT/20)
     love.graphics.print(left_text, left_x, left_y)
 
     local right_text = tostring(entities.right_paddle.score)
-    local right_x, right_y = utils.get_normalized_coordinates(right_text, config.WINDOW_WIDTH * 0.75,  config.WINDOW_HEIGHT/20)
+    local right_x, right_y = utils.get_normalized_coordinates(right_text, assets.fonts.main_large, config.WINDOW_WIDTH * 0.75,  config.WINDOW_HEIGHT/20)
     love.graphics.print(right_text, right_x, right_y)
 end
 
