@@ -18,5 +18,6 @@ return {
     AI_ERROR_MARGIN = 20,
     AI_LERP_FACTOR = 10,
 
+    TITLE_TEXT = "Pong",
     SCORE_TO_WIN = 11
 }
