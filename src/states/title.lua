@@ -2,8 +2,9 @@ local assets = require("src.assets")
 local utils = require("src.utils")
 local config = require("config")
 
-
-local title = {}
+local title = {
+    time = 0
+}
 
 local menu = {
     options = {
@@ -13,7 +14,8 @@ local menu = {
     selected = 1
 }
 
-function title.update(dt)
+function title:update(dt)
+    title.time = title.time + dt
     return nil
 end
 
@@ -31,10 +33,22 @@ end
 
 function title:draw()
     -- Title
+    local scale = 1 + config.TITLE_BOUNCE_AMPLITUDE * math.sin(title.time + config.TITLE_BOUNCE_SPEED)
     love.graphics.setFont(assets.fonts.title)
     love.graphics.setColor(1,1,1)
     local x,y = utils.get_normalized_coordinates(config.TITLE_TEXT, assets.fonts.title, config.WINDOW_WIDTH / 2, config.WINDOW_HEIGHT * 0.3)
+
+    local text_width = assets.fonts.title:getWidth(config.TITLE_TEXT)
+    local text_height = assets.fonts.title:getHeight()
+    local center_x = x + text_width * 0.5
+    local center_y = y + text_height * 0.5
+
+    love.graphics.push()
+    love.graphics.translate(center_x, center_y)
+    love.graphics.scale(scale, scale)
+    love.graphics.translate(-center_x, -center_y)
     love.graphics.print(config.TITLE_TEXT, x, y)
+    love.graphics.pop()
 
     -- Options
     love.graphics.setFont(assets.fonts.main_large)

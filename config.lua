@@ -20,5 +20,8 @@ return {
     AI_LERP_FACTOR = 10,
 
     TITLE_TEXT = "Pong",
+    TITLE_BOUNCE_SPEED = 4,
+    TITLE_BOUNCE_AMPLITUDE = 0.1,
+
     SCORE_TO_WIN = 11
 }
