@@ -18,6 +18,13 @@ function physics.update(dt, entities)
         if physics.paddle_collides(ball, paddle) then
             ball.speed.x = -ball.speed.x
             ball.speed.y = physics.get_vertical_speed(ball, paddle)
+
+            if ball.speed.x > 0 then
+                ball.x = paddle.x + paddle.width + ball.radius
+            else
+                ball.x = paddle.x - ball.radius
+            end
+
             physics.play_collision_sound()
         end
         physics.restrict_paddle(paddle)
@@ -25,8 +32,13 @@ function physics.update(dt, entities)
 end
 
 function physics.vertical_bounds(ball)
-    if ball.y < 0 or ball.y > config.WINDOW_HEIGHT then
+    if ball.y < 0 then
         ball.speed.y = -ball.speed.y
+        ball.y = 0
+        physics.play_collision_sound()
+    elseif ball.y > config.WINDOW_HEIGHT then
+        ball.speed.y = -ball.speed.y
+        ball.y = config.WINDOW_HEIGHT
         physics.play_collision_sound()
     end
 end

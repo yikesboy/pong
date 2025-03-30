@@ -8,7 +8,7 @@ return {
 
     BALL_RADIUS = 20,
     BALL_SPEED = 700,
-    REFLECTION_ANGLES = {60, 45, 30, 0, 0, 30, 45, 60},
+    REFLECTION_ANGLES = {60, 45, 30, 0, 0, -30, -45, -60},
 
     PADDLE_WIDTH = 20,
     PADDLE_HEIGHT = 150,
