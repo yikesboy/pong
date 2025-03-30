@@ -1,4 +1,5 @@
 local config = require("config")
+local assets = require("src.assets")
 
 local physics = {}
 
@@ -17,6 +18,7 @@ function physics.update(dt, entities)
         if physics.paddle_collides(ball, paddle) then
             ball.speed.x = -ball.speed.x
             ball.speed.y = physics.get_vertical_speed(ball, paddle)
+            physics.play_collision_sound()
         end
         physics.restrict_paddle(paddle)
     end
@@ -25,6 +27,7 @@ end
 function physics.vertical_bounds(ball)
     if ball.y < 0 or ball.y > config.WINDOW_HEIGHT then
         ball.speed.y = -ball.speed.y
+        physics.play_collision_sound()
     end
 end
 
@@ -78,6 +81,11 @@ function physics.get_vertical_speed(ball, paddle)
     local angle = config.REFLECTION_ANGLES[segment + 1]
 
     return speed * math.sin(math.rad(angle))
+end
+
+---Plays hit_sfx from the assets store
+function physics.play_collision_sound()
+    love.audio.play(assets.sounds.hit_sfx)
 end
 
 return physics
