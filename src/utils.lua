@@ -9,8 +9,8 @@ local utils = {}
 --- @return number x_norm The normalized x-coordinate.
 --- @return number y_norm The normalized y-coordinate.
 function utils.get_normalized_coordinates(text, x, y)
-    local x_norm = x - assets.fonts.main:getWidth(text) * 0.5
-    local y_norm = y - assets.fonts.main:getHeight() * 0.5
+    local x_norm = x - assets.fonts.main_large:getWidth(text) * 0.5
+    local y_norm = y - assets.fonts.main_large:getHeight() * 0.5
     return x_norm, y_norm
 end
 
