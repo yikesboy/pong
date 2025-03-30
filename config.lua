@@ -14,5 +14,9 @@ return {
     PADDLE_SPEED = 1600,
     SEGMENT_COUNT = 8,
 
+    AI_REACTION_TIME = 0.1,
+    AI_ERROR_MARGIN = 20,
+    AI_LERP_FACTOR = 10,
+
     SCORE_TO_WIN = 11
 }
