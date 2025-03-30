@@ -16,6 +16,7 @@ function physics.update(dt, entities)
     for _, paddle in pairs({entities.left_paddle, entities.right_paddle}) do
         if physics.paddle_collides(ball, paddle) then
             ball.speed.x = -ball.speed.x
+            ball.speed.y = physics.get_vertical_speed(ball, paddle)
         end
         physics.restrict_paddle(paddle)
     end
@@ -59,7 +60,24 @@ function physics.reset_ball(ball)
     ball.x = config.WINDOW_WIDTH / 2
     ball.y = config.WINDOW_HEIGHT / 2
     ball.speed.x = config.BALL_SPEED * (math.random(0, 1) == 0 and 1 or -1)
-    ball.speed.y = 0
+    ball.speed.y = config.BALL_SPEED * math.random() * (math.random(0, 1) == 0 and 1 or -1)
+end
+
+---Calculates the reflection angle and translates it to vertical speed.
+---@param ball Ball
+---@param paddle Paddle
+---@return number
+function physics.get_vertical_speed(ball, paddle)
+    local hit_position = ball.y - paddle.y
+    local segment_size = paddle.height / config.SEGMENT_COUNT
+
+    local segment = math.floor(hit_position / segment_size)
+    segment = math.max(0, math.min(7, segment))
+
+    local speed = math.sqrt(ball.speed.x^2 + ball.speed.y^2)
+    local angle = config.REFLECTION_ANGLES[segment + 1]
+
+    return speed * math.sin(math.rad(angle))
 end
 
 return physics

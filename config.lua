@@ -7,10 +7,12 @@ return {
 
     BALL_RADIUS = 20,
     BALL_SPEED = 1000,
+    REFLECTION_ANGLES = {60, 45, 30, 0, 0, 30, 45, 60},
 
     PADDLE_WIDTH = 20,
     PADDLE_HEIGHT = 150,
     PADDLE_SPEED = 1600,
+    SEGMENT_COUNT = 8,
 
     SCORE_TO_WIN = 11
 }

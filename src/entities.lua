@@ -26,7 +26,7 @@ local entities = {
         radius = config.BALL_RADIUS,
         speed = {
             x = config.BALL_SPEED * (math.random(0,1) == 0 and 1 or -1),
-            y = 0
+            y = config.BALL_SPEED * math.random() * (math.random(0, 1) == 0 and 1 or -1)
         }
     },
     left_paddle = {
