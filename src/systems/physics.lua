@@ -12,7 +12,11 @@ function physics.update(dt, entities)
     ball.y = ball.y + ball.speed.y * dt
 
     physics.vertical_bounds(ball)
-    physics.check_out_of_bounds(entities)
+    local next_state, params = physics.check_out_of_bounds(entities)
+
+    if next_state then
+        return next_state, params
+    end
 
     for _, paddle in pairs({entities.left_paddle, entities.right_paddle}) do
         if physics.paddle_collides(ball, paddle) then
@@ -64,10 +68,16 @@ function physics.check_out_of_bounds(entities)
     if entities.ball.x < 0 then
         physics.play_round_loss_sound()
         entities.right_paddle.score =  entities.right_paddle.score + 1
+        if entities.right_paddle.score >= config.SCORE_TO_WIN then
+            return "end", {winner = "right", mode = entities.game_mode}
+        end
         physics.reset_ball(entities.ball)
     elseif entities.ball.x > config.WINDOW_WIDTH then
         physics.play_round_loss_sound()
         entities.left_paddle.score =  entities.left_paddle.score + 1
+        if entities.left_paddle.score >= config.SCORE_TO_WIN then
+            return "end", {winner = "left", mode = entities.game_mode}
+        end
         physics.reset_ball(entities.ball)
     end
 end

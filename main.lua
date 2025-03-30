@@ -2,10 +2,11 @@ local config = require("config")
 local assets = require("src.assets")
 local states = {
     title = require("src.states.title"),
-    play = require("src.states.play")
+    play = require("src.states.play"),
+    ["end"] = require("src.states.end")
 }
-local entities = require("src.entities")
 
+local entities = require("src.entities")
 
 local current_state = nil
 
