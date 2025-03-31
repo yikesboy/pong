@@ -39,4 +39,10 @@ function state:draw()
     render.draw(entities)
 end
 
+function state:keypressed(key)
+    if key == "escape" then
+        return "pause", { previous_state = state }
+    end
+end
+
 return state

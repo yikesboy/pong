@@ -3,7 +3,8 @@ local assets = require("src.assets")
 local states = {
     title = require("src.states.title"),
     play = require("src.states.play"),
-    ["end"] = require("src.states.end")
+    ["end"] = require("src.states.end"),
+    pause = require("src.states.pause")
 }
 
 local entities = require("src.entities")
@@ -43,6 +44,8 @@ function love.keypressed(key)
             if current_state.init then
                 current_state:init(params)
             end
+        elseif params and params.resume and params.state then
+            current_state = params.state
         end
     end
 end
