@@ -42,10 +42,10 @@ function end_state:keypressed(key)
 end
 
 function end_state:draw()
-    love.graphics.setFont(assets.fonts.title)
+    love.graphics.setFont(assets.fonts.title_medium)
     love.graphics.setColor(1,1,1)
     local winner_text = self.winner == "left" and "Left Player Wins!" or "Right Player Wins!"
-    local x, y = utils.get_normalized_coordinates(winner_text, assets.fonts.title, config.WINDOW_WIDTH * 0.5, config.WINDOW_HEIGHT * 0.3)
+    local x, y = utils.get_normalized_coordinates(winner_text, assets.fonts.title_medium, config.WINDOW_WIDTH * 0.5, config.WINDOW_HEIGHT * 0.3)
     love.graphics.print(winner_text, x, y)
 
     love.graphics.setFont(assets.fonts.main_large)

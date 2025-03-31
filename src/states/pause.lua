@@ -42,9 +42,9 @@ end
 function pause_state:draw()
     love.graphics.setColor(1,1,1)
     self.previous_state:draw()
-    love.graphics.setFont(assets.fonts.title)
+    love.graphics.setFont(assets.fonts.title_medium)
     local title_text = "Game Paused"
-    local x,y = utils.get_normalized_coordinates(title_text, assets.fonts.title, config.WINDOW_WIDTH * 0.5, config.WINDOW_HEIGHT * 0.3)
+    local x,y = utils.get_normalized_coordinates(title_text, assets.fonts.title_medium, config.WINDOW_WIDTH * 0.5, config.WINDOW_HEIGHT * 0.3)
     love.graphics.print(title_text, x, y)
 
     love.graphics.setFont(assets.fonts.main_large)
