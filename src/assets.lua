@@ -12,6 +12,7 @@ function assets.load()
     assets.sounds.switch_sfx = love.audio.newSource("assets/sounds/457326__stratocube__switch-05.wav", "static")
     assets.fonts.main_large = love.graphics.newFont("assets/fonts/Arcadepix Plus.ttf", config.WINDOW_HEIGHT / 10)
     assets.fonts.main_medium = love.graphics.newFont("assets/fonts/Arcadepix Plus.ttf", config.WINDOW_HEIGHT / 16)
+    assets.fonts.main_small = love.graphics.newFont("assets/fonts/Arcadepix Plus.ttf", config.WINDOW_HEIGHT / 24)
     assets.fonts.title = love.graphics.newFont("assets/fonts/Arcadepix Plus.ttf", config.WINDOW_HEIGHT / 3)
     assets.fonts.title_medium = love.graphics.newFont("assets/fonts/Arcadepix Plus.ttf", config.WINDOW_HEIGHT / 5)
 end

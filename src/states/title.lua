@@ -25,11 +25,11 @@ function title_state:keypressed(key)
     if key then
         love.audio.play(assets.sounds.switch_sfx)
     end
-    if key == "down" then
+    if key == "j" then
         menu.selected = math.min(menu.selected + 1, #menu.options)
-    elseif key == "up" then
+    elseif key == "k" then
         menu.selected = math.max(menu.selected - 1, 1)
-    elseif key == "return" then
+    elseif key == "space" then
         local selectedMode = menu.options[menu.selected].mode
         if selectedMode == "quit" then
             love.event.quit()
@@ -66,6 +66,12 @@ function title_state:draw()
         love.graphics.setColor(i == menu.selected and {1, 0.8, 1} or {1, 1, 1})
         love.graphics.print(text, x, y)
     end
+
+    love.graphics.setFont(assets.fonts.main_small)
+    love.graphics.setColor(1,1,1)
+    local control_hints = "J - Down   |   Space - Select Option   |   K - Up"
+    local x, y = utils.get_normalized_coordinates(control_hints, assets.fonts.main_small, config.WINDOW_WIDTH * 0.5, config.WINDOW_HEIGHT * 0.95)
+    love.graphics.print(control_hints, x, y)
 end
 
 return title_state
