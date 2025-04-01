@@ -61,13 +61,14 @@ end
 ---@param entities Entities
 function draw_control_hints(entities)
     local size = config.WINDOW_WIDTH * 0.03
+    local line_width = 6
 
-        draw_key("K", size, config.WINDOW_WIDTH - size, config.WINDOW_HEIGHT - 2*size)
-        draw_key("J", size, config.WINDOW_WIDTH - size, config.WINDOW_HEIGHT - size)
+        draw_key("K", size, line_width, config.WINDOW_WIDTH - size - line_width, config.WINDOW_HEIGHT - 2*size - line_width)
+        draw_key("J", size, line_width, config.WINDOW_WIDTH - size - line_width, config.WINDOW_HEIGHT - size - line_width)
 
     if entities.game_mode == "couch" then
-    draw_key("W", size, 0, config.WINDOW_HEIGHT - 2*size)
-    draw_key("S", size, 0, config.WINDOW_HEIGHT - size)
+    draw_key("W", size, line_width, 0 + line_width, config.WINDOW_HEIGHT - 2*size - line_width)
+    draw_key("S", size, line_width, 0 + line_width, config.WINDOW_HEIGHT - size - line_width)
     end
 end
 
@@ -75,8 +76,9 @@ end
 ---@param size number
 ---@param x number
 ---@param y number
-function draw_key(key, size, x, y)
+function draw_key(key, size, line_width, x, y)
     love.graphics.setColor(1,1,1)
+    love.graphics.setLineWidth(line_width)
     love.graphics.rectangle("line", x, y, size, size)
     love.graphics.setFont(assets.fonts.main_medium)
 
