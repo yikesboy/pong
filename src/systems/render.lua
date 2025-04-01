@@ -20,6 +20,7 @@ function render.draw(entities)
 
     draw_scores(entities)
     draw_seperator()
+    draw_control_hints(entities)
 end
 
 ---@param ball Ball
@@ -55,6 +56,34 @@ function draw_seperator()
         love.graphics.line(x, y, x, y + config.SEPARATOR_STROKE_LENGTH)
         y = y + 2 * config.SEPARATOR_STROKE_LENGTH
     end
+end
+
+---@param entities Entities
+function draw_control_hints(entities)
+    local size = config.WINDOW_WIDTH * 0.03
+
+        draw_key("K", size, config.WINDOW_WIDTH - size, config.WINDOW_HEIGHT - 2*size)
+        draw_key("J", size, config.WINDOW_WIDTH - size, config.WINDOW_HEIGHT - size)
+
+    if entities.game_mode == "couch" then
+    draw_key("W", size, 0, config.WINDOW_HEIGHT - 2*size)
+    draw_key("S", size, 0, config.WINDOW_HEIGHT - size)
+    end
+end
+
+---@param key string
+---@param size number
+---@param x number
+---@param y number
+function draw_key(key, size, x, y)
+    love.graphics.setColor(1,1,1)
+    love.graphics.rectangle("line", x, y, size, size)
+    love.graphics.setFont(assets.fonts.main_medium)
+
+    local center_x = x + size * 0.5
+    local center_y = y + size * 0.5
+    local norm_x, norm_y = utils.get_normalized_coordinates(key, assets.fonts.main_medium, center_x, center_y)
+    love.graphics.print(key, norm_x + size * 0.07 , norm_y - size * 0.07)
 end
 
 return render

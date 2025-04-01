@@ -15,7 +15,7 @@ function play_state:init(params)
 end
 
 function play_state:update(dt)
-    input.update(dt, entities.right_paddle, "up", "down");
+    input.update(dt, entities.right_paddle, "k", "j");
 
     if game_mode == "single" then
         ai.update(dt, entities)
