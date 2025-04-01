@@ -47,6 +47,7 @@ function entities.create()
         speed = config.PADDLE_SPEED,
         score = 0
     },
+    game_mode = nil
 }
 end
 

@@ -35,6 +35,8 @@ function physics.update(dt, entities)
     end
 end
 
+---Checks and handles the ball going out of bounds on the y-axis.
+---@param ball Ball
 function physics.vertical_bounds(ball)
     if ball.y < 0 then
         ball.speed.y = -ball.speed.y
@@ -47,6 +49,9 @@ function physics.vertical_bounds(ball)
     end
 end
 
+---Checks and handles the ball colliding with the given paddle.
+---@param ball Ball
+---@param paddle Paddle
 function physics.paddle_collides(ball, paddle)
     return ball.x + ball.radius > paddle.x and
         ball.x - ball.radius < paddle.x + paddle.width and

@@ -2,7 +2,7 @@ local assets = require("src.assets")
 local utils = require("src.utils")
 local config = require("config")
 
-local title = {
+local title_state = {
     time = 0
 }
 
@@ -15,13 +15,13 @@ local menu = {
     selected = 1
 }
 
-function title:update(dt)
-    title.time = title.time + dt
+function title_state:update(dt)
+    self.time = self.time + dt
     return nil
 end
 
 
-function title:keypressed(key)
+function title_state:keypressed(key)
     if key then
         love.audio.play(assets.sounds.switch_sfx)
     end
@@ -39,9 +39,9 @@ function title:keypressed(key)
     end
 end
 
-function title:draw()
+function title_state:draw()
     -- Title
-    local scale = 1 + config.TITLE_BOUNCE_AMPLITUDE * math.sin(title.time + config.TITLE_BOUNCE_SPEED)
+    local scale = 1 + config.TITLE_BOUNCE_AMPLITUDE * math.sin(self.time + config.TITLE_BOUNCE_SPEED)
     love.graphics.setFont(assets.fonts.title)
     love.graphics.setColor(1,1,1)
     local x,y = utils.get_normalized_coordinates(config.TITLE_TEXT, assets.fonts.title, config.WINDOW_WIDTH / 2, config.WINDOW_HEIGHT * 0.3)
@@ -68,4 +68,4 @@ function title:draw()
     end
 end
 
-return title
+return title_state

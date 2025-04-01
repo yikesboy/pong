@@ -5,19 +5,16 @@ local physics= require("src.systems.physics")
 local ai = require("src.systems.ai")
 local config = require("config")
 
-local state = {}
+local play_state = {}
 local game_mode = "single"
 
-function state:init(params)
+function play_state:init(params)
     game_mode = params and params.mode or "single"
-    entities.left_paddle.score = 0
-    entities.right_paddle.score = 0
-    entities.left_paddle.y = (config.WINDOW_HEIGHT - entities.left_paddle.height) / 2
-    entities.right_paddle.y = (config.WINDOW_HEIGHT - entities.right_paddle.height) / 2
     physics.reset_ball(entities.ball)
+    self.reset_play_state()
 end
 
-function state:update(dt)
+function play_state:update(dt)
     input.update(dt, entities.right_paddle, "up", "down");
 
     if game_mode == "single" then
@@ -35,14 +32,21 @@ function state:update(dt)
     return nil
 end
 
-function state:draw()
+function play_state:draw()
     render.draw(entities)
 end
 
-function state:keypressed(key)
+function play_state:keypressed(key)
     if key == "escape" then
-        return "pause", { previous_state = state }
+        return "pause", { previous_state = play_state }
     end
 end
 
-return state
+function play_state.reset_play_state()
+    entities.left_paddle.score = 0
+    entities.right_paddle.score = 0
+    entities.left_paddle.y = (config.WINDOW_HEIGHT - entities.left_paddle.height) / 2
+    entities.right_paddle.y = (config.WINDOW_HEIGHT - entities.right_paddle.height) / 2
+end
+
+return play_state
