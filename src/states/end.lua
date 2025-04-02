@@ -3,7 +3,7 @@ local utils = require("src.utils")
 local assets = require("src.assets")
 
 local end_state = {
-    winenr = nil,
+    winner = nil,
     game_mode = nil,
     menu = {
         options = {
